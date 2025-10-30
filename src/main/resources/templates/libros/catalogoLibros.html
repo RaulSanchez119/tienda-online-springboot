@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Libros</title>
+    <link rel="stylesheet" href="/css/CatalogoBusquedaStyle.css">
+</head>
+<body>
+
+<h1 class="titulo-catalogo">Catálogo de Libros</h1>
+
+<div class="total">
+  <span th:if="${libros != null}">
+    <h3 th:text="'Hay un total de ' + ${#lists.size(libros)} + ' libros'"></h3>
+  </span>
+    <span th:if="${libros == null}">No hay libros disponibles.</span>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Isbn</th>
+        <th>Editorial</th>
+        <th>Precio (€)</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="libro : ${libros}">
+        <td th:text="${libro.id}"></td>
+        <td th:text="${libro.titulo}"></td>
+        <td th:text="${libro.autor}"></td>
+        <td th:text="${libro.isbn}"></td>
+        <td th:text="${libro.editorial}"></td>
+        <td th:text="${libro.precio}"></td>
+        <td>
+            <a th:href="@{/libros/form/modificar/{id}(id=${libro.id})}" class="btn-modificar">Modificar</a>
+            <form th:action="@{/libros/eliminar/{id}(id=${libro.id})}" method="post" class="form-confirmar"
+                  onsubmit="return confirm('¿Estás seguro de que deseas eliminar este libro?')">
+                <button type="submit" class="btn-eliminar">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="btn-container">
+    <div class="btn-agregar-container">
+        <a href="/libros/form/agregar" class="btn-agregar">Agregar Libro</a>
+    </div>
+    <a href="http://localhost:8080" class="volver-inicio">Volver al inicio</a>
+</div>
+
+</body>
+</html>

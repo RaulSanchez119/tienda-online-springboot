@@ -1,0 +1,156 @@
+.titulo-catalogo {
+    text-align: center;
+    font-size: 3em;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.total {
+    text-align: center;
+    margin: 10px 0;
+    color: #666;
+}
+
+.btn-agregar-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-agregar {
+    font-size: 1.5em;
+    padding: 8px 15px;
+    background-color: #0073e6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-agregar:hover {
+    background-color: #005bb5;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #0073e6;
+    color: white;
+    font-weight: bold;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.volver-inicio {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #0073e6;
+    font-size: 1.1em;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+.volver-inicio:hover {
+    text-decoration: underline;
+}
+
+.form-busqueda {
+
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-busqueda label {
+    margin-left: 20px;
+}
+.form-busqueda input {
+    width: 120px;
+    height: 20px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.form-busqueda input:focus {
+    border-color: #0073e6;
+    outline: none;
+}
+
+.form-busqueda button {
+    width: 100px;
+    height: 28px;
+    margin-left: 46%;
+    margin-top: 10px;
+    font-size: 1em;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-busqueda button:hover {
+    background-color: #005bb5;
+}
+
+.form-confirmar {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-modificar, .btn-eliminar {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 0 5px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-modificar {
+    background-color: #4CAF50;
+}
+
+.btn-modificar:hover {
+    background-color: #45a049;
+}
+
+.btn-eliminar {
+    border: none;
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+    background-color: #f44336;
+}
+
+.btn-eliminar:hover {
+    background-color: #9e1c00;
+}
+

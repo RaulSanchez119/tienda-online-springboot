@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo de Discos</title>
+  <link rel="stylesheet" href="/css/CatalogoBusquedaStyle.css">
+</head>
+<body>
+
+<h1 class="titulo-catalogo">Catálogo de Discos</h1>
+
+<div class="total">
+  <span th:if="${discos != null}">
+    <h3 th:text="'Hay un total de ' + ${#lists.size(discos)} + ' discos'"></h3>
+  </span>
+  <span th:if="${discos == null}">No hay discos disponibles.</span>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Título</th>
+    <th>Autor</th>
+    <th>Año</th>
+    <th>Pistas</th>
+    <th>Precio (€)</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="disco : ${discos}">
+    <td th:text="${disco.id}"></td>
+    <td th:text="${disco.titulo}"></td>
+    <td th:text="${disco.autor}"></td>
+    <td th:text="${disco.anyo}"></td>
+    <td th:text="${disco.pistas}"></td>
+    <td th:text="${disco.precio}"></td>
+    <td>
+      <a th:href="@{/discos/form/modificar/{id}(id=${disco.id})}" class="btn-modificar">Modificar</a>
+      <form th:action="@{/discos/eliminar/{id}(id=${disco.id})}" method="post" class="form-confirmar"
+            onsubmit="return confirm('¿Estás seguro de que deseas eliminar este disco?')">
+        <button type="submit" class="btn-eliminar">Eliminar</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="btn-container">
+  <div class="btn-agregar-container">
+    <a href="/discos/form/agregar" class="btn-agregar">Agregar Disco</a>
+  </div>
+  <a href="http://localhost:8080" class="volver-inicio">Volver al inicio</a>
+</div>
+
+</body>
+</html>

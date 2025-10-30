@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Películas</title>
+    <link rel="stylesheet" href="/css/CatalogoBusquedaStyle.css"/>
+</head>
+<body>
+<h1 class="titulo-catalogo">Búsqueda de Películas</h1>
+
+<form action="/peliculas/buscar/pelicula" method="GET" class="form-busqueda">
+    <label for="idPelicula">ID:</label>
+    <input type="number" id="idPelicula" name="idPelicula" min="0" max="99999" value="">
+
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" name="titulo" value="">
+
+    <label for="formato">Formato:</label>
+    <select id="formato" name="formato">
+        <option value="" th:selected="${#strings.isEmpty(formato)}"></option>
+        <option th:each="formato : ${T(rivera.sanchez.raul.tiendaonline.enums.Formato).values()}"
+                th:value="${formato}" th:text="${formato}"></option>
+    </select>
+
+    <label for="anyo">Año:</label>
+    <input type="number" id="anyo" name="anyo" min="1900" max="2025" value="" >
+
+    <label for="director">Director:</label>
+    <input type="text" id="director" name="director" value="">
+    <br/>
+    <button type="submit" class="btn-submit">Buscar</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Formato</th>
+        <th>Año</th>
+        <th>Director</th>
+        <th>Precio (€)</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pelicula : ${peliculas}">
+        <td th:text="${pelicula.id}"></td>
+        <td th:text="${pelicula.titulo}"></td>
+        <td th:text="${pelicula.formato}"></td>
+        <td th:text="${pelicula.anyo}"></td>
+        <td th:text="${pelicula.director}"></td>
+        <td th:text="${pelicula.precio}"></td>
+        <td>
+            <a th:href="@{/peliculas/form/modificar/{id}(id=${pelicula.id})}" class="btn-modificar">Modificar</a>
+            <form th:action="@{/peliculas/eliminar/{id}(id=${pelicula.id})}" method="post" class="form-confirmar"
+                  onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta película?')">
+                <button type="submit" class="btn-eliminar">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="btn-container">
+    <div class="btn-agregar-container">
+        <a href="/peliculas/form/agregar" class="btn-agregar">Agregar Película</a>
+    </div>
+    <a href="http://localhost:8080" class="volver-inicio">Volver al inicio</a>
+</div>
+
+</body>
+</html>
